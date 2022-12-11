@@ -1,0 +1,217 @@
+import java.io.*;
+import java.util.*;
+
+public class Main
+{
+
+    enum RomeNumbers {
+        Z(0), I(1), II(2), III(3), IV(4), V(5), VI(6), VII(7), VIII(8), IX(9), X(10);
+
+        private int count;
+
+        RomeNumbers(int count)  {
+            this.count = count;
+        }
+        public int getCount(RomeNumbers data) {
+            return count;
+        }
+    }
+
+    private static boolean isRomeNumber(String data) {
+
+        try {
+            Enum.valueOf(RomeNumbers.class, data);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        String strInput = scan.nextLine().trim();
+        String[] numbersArray = strInput.split(" ");
+        HashMap<Integer, String> arithmeticOperatorsMap = new HashMap<>();
+        HashMap<Integer, String> romeNumbersMap = new HashMap<>();
+
+        arithmeticOperatorsMap.put(1, "+");
+        arithmeticOperatorsMap.put(2, "-");
+        arithmeticOperatorsMap.put(3, "/");
+        arithmeticOperatorsMap.put(4, "*");
+
+        romeNumbersMap.put(1, "I");
+        romeNumbersMap.put(2, "II");
+        romeNumbersMap.put(3, "III");
+        romeNumbersMap.put(4, "IV");
+        romeNumbersMap.put(5, "V");
+        romeNumbersMap.put(6, "VI");
+        romeNumbersMap.put(7, "VII");
+        romeNumbersMap.put(8, "VIII");
+        romeNumbersMap.put(9, "IX");
+        romeNumbersMap.put(10, "X");
+        romeNumbersMap.put(11, "XI");
+        romeNumbersMap.put(12, "XII");
+        romeNumbersMap.put(13, "XIII");
+        romeNumbersMap.put(14, "XIV");
+        romeNumbersMap.put(15, "XV");
+        romeNumbersMap.put(16, "XVI");
+        romeNumbersMap.put(17, "XVII");
+        romeNumbersMap.put(18, "XVIII");
+        romeNumbersMap.put(19, "XIX");
+        romeNumbersMap.put(20, "XX");
+        romeNumbersMap.put(21, "XXI");
+        romeNumbersMap.put(22, "XXII");
+        romeNumbersMap.put(23, "XXIII");
+        romeNumbersMap.put(24, "XXIV");
+        romeNumbersMap.put(25, "XXV");
+        romeNumbersMap.put(26, "XXVI");
+        romeNumbersMap.put(27, "XXVII");
+        romeNumbersMap.put(28, "XXVIII");
+        romeNumbersMap.put(29, "XXIX");
+        romeNumbersMap.put(30, "XXX");
+        romeNumbersMap.put(31, "XXXI");
+        romeNumbersMap.put(32, "XXXII");
+        romeNumbersMap.put(33, "XXXIII");
+        romeNumbersMap.put(34, "XXXIV");
+        romeNumbersMap.put(35, "XXXV");
+        romeNumbersMap.put(36, "XXXVI");
+        romeNumbersMap.put(37, "XXXVII");
+        romeNumbersMap.put(38, "XXXVIII");
+        romeNumbersMap.put(39, "XXXIX");
+        romeNumbersMap.put(40, "XXXX");
+        romeNumbersMap.put(41, "XXXXI");
+        romeNumbersMap.put(42, "XXXXII");
+        romeNumbersMap.put(43, "XXXXIII");
+        romeNumbersMap.put(44, "XXXXIV");
+        romeNumbersMap.put(45, "XXXXV");
+        romeNumbersMap.put(46, "XXXXVI");
+        romeNumbersMap.put(47, "XXXXVII");
+        romeNumbersMap.put(48, "XXXXVIII");
+        romeNumbersMap.put(49, "XXXXIX");
+        romeNumbersMap.put(50, "L");
+        romeNumbersMap.put(51, "LI");
+        romeNumbersMap.put(52, "LII");
+        romeNumbersMap.put(53, "LIII");
+        romeNumbersMap.put(54, "LIV");
+        romeNumbersMap.put(55, "LV");
+        romeNumbersMap.put(56, "LVI");
+        romeNumbersMap.put(57, "LVII");
+        romeNumbersMap.put(58, "LVIII");
+        romeNumbersMap.put(59, "LIX");
+        romeNumbersMap.put(60, "LX");
+        romeNumbersMap.put(61, "LXI");
+        romeNumbersMap.put(62, "LXII");
+        romeNumbersMap.put(63, "LXIII");
+        romeNumbersMap.put(64, "LXIV");
+        romeNumbersMap.put(65, "LXV");
+        romeNumbersMap.put(66, "LXVI");
+        romeNumbersMap.put(67, "LXVII");
+        romeNumbersMap.put(68, "LXVIII");
+        romeNumbersMap.put(69, "LXIX");
+        romeNumbersMap.put(70, "LXX");
+        romeNumbersMap.put(71, "LXXI");
+        romeNumbersMap.put(72, "LXXII");
+        romeNumbersMap.put(73, "LXXIII");
+        romeNumbersMap.put(74, "LXXIV");
+        romeNumbersMap.put(75, "LXXV");
+        romeNumbersMap.put(76, "LXXVI");
+        romeNumbersMap.put(77, "LXXVII");
+        romeNumbersMap.put(78, "LXXVIII");
+        romeNumbersMap.put(79, "LXXIX");
+        romeNumbersMap.put(80, "LXXX");
+        romeNumbersMap.put(81, "LXXXI");
+        romeNumbersMap.put(82, "LXXXII");
+        romeNumbersMap.put(83, "LXXXIII");
+        romeNumbersMap.put(84, "LXXXIV");
+        romeNumbersMap.put(85, "LXXXV");
+        romeNumbersMap.put(86, "LXXXVI");
+        romeNumbersMap.put(87, "LXXXVII");
+        romeNumbersMap.put(88, "LXXXVIII");
+        romeNumbersMap.put(89, "LXXXIX");
+        romeNumbersMap.put(90, "LXXXX");
+        romeNumbersMap.put(91, "LXXXXI");
+        romeNumbersMap.put(92, "LXXXXII");
+        romeNumbersMap.put(93, "LXXXXIII");
+        romeNumbersMap.put(94, "LXXXXIV");
+        romeNumbersMap.put(95, "LXXXXV");
+        romeNumbersMap.put(96, "LXXXXVI");
+        romeNumbersMap.put(97, "LXXXXVII");
+        romeNumbersMap.put(98, "LXXXXVIII");
+        romeNumbersMap.put(99, "LXXXXIX");
+        romeNumbersMap.put(100, "C");
+
+        if (numbersArray.length == 3) {
+
+            boolean checkNumbersArabic0 = false;
+            boolean checkNumbersArabic2 = false;
+            try {
+                checkNumbersArabic0 = (Integer.parseInt(numbersArray[0]) > 0) && (Integer.parseInt(numbersArray[0]) < 11);
+
+                checkNumbersArabic2 = (Integer.parseInt(numbersArray[0]) > 0) && (Integer.parseInt(numbersArray[0]) < 11);
+
+            } catch (NumberFormatException e) {
+
+            }
+            boolean checkNumbersRome0 = isRomeNumber(numbersArray[0]);
+
+            boolean checkNumbersRome2 = isRomeNumber(numbersArray[2]);
+
+            boolean checkOperators = arithmeticOperatorsMap.containsValue(numbersArray[1]);
+
+            if (checkOperators) {
+
+
+                if (checkNumbersArabic0 & checkNumbersArabic2) {
+
+                    int firstNumber = Integer.parseInt(numbersArray[0]);
+                    int secondNumber = Integer.parseInt(numbersArray[2]);
+                    if (numbersArray[1].equals("+")) {
+                        System.out.println(firstNumber + secondNumber);
+                    }
+                    if (numbersArray[1].equals("-")) {
+                        System.out.println(firstNumber - secondNumber);
+                    }
+                    if (numbersArray[1].equals("*")) {
+                        System.out.println(firstNumber * secondNumber);
+                    }
+                    if (numbersArray[1].equals("/")) {
+                        System.out.println(firstNumber / secondNumber);
+                    }
+                }
+                else if (checkNumbersRome0 & checkNumbersRome2) {
+                    RomeNumbers firstNumber = Enum.valueOf(RomeNumbers.class, numbersArray[0]);
+                    RomeNumbers secondNumber = Enum.valueOf(RomeNumbers.class, numbersArray[2]);
+                    int result = 0;
+                    if (numbersArray[1].equals("+")) {
+                        result = firstNumber.count + secondNumber.count;
+                    }
+                    if (numbersArray[1].equals("-")) {
+                        result = firstNumber.count - secondNumber.count;
+                    }
+                    if (numbersArray[1].equals("*")) {
+                        result = firstNumber.count * secondNumber.count;
+                    }
+                    if (numbersArray[1].equals("/")) {
+                        result = firstNumber.count / secondNumber.count;
+                    }
+                    if (result < 1) {
+                        throw new IOException();
+                    }
+                    System.out.println(romeNumbersMap.get(result));
+
+
+                }
+                else {
+                    throw new IOException();
+                }
+            }
+            else {
+                throw new IOException();
+            }
+        }
+        else {
+            throw new IOException();
+        }
+    }
+}

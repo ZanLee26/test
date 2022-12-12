@@ -26,11 +26,16 @@ public class Main
             return false;
         }
     }
-
-
-    public static void main(String[] args) throws IOException {
+    
+    public static void main (String[] args) throws Exception {
+        
         Scanner scan = new Scanner(System.in);
         String strInput = scan.nextLine().trim();
+        System.out.println(calc(strInput));
+    }
+
+
+    public static String calc(String strInput) throws IOException {
         String[] numbersArray = strInput.split(" ");
         HashMap<Integer, String> arithmeticOperatorsMap = new HashMap<>();
         HashMap<Integer, String> romeNumbersMap = new HashMap<>();
@@ -166,18 +171,22 @@ public class Main
 
                     int firstNumber = Integer.parseInt(numbersArray[0]);
                     int secondNumber = Integer.parseInt(numbersArray[2]);
+                    int result = 0;
                     if (numbersArray[1].equals("+")) {
-                        System.out.println(firstNumber + secondNumber);
+                        result = (firstNumber + secondNumber);
                     }
                     if (numbersArray[1].equals("-")) {
-                        System.out.println(firstNumber - secondNumber);
+                        result = (firstNumber - secondNumber);
                     }
                     if (numbersArray[1].equals("*")) {
-                        System.out.println(firstNumber * secondNumber);
+                        result = (firstNumber * secondNumber);
                     }
                     if (numbersArray[1].equals("/")) {
-                        System.out.println(firstNumber / secondNumber);
+                        result = (firstNumber / secondNumber);
                     }
+                    String resultString = Integer.toString(result);
+                    
+                    return resultString;
                 }
                 else if (checkNumbersRome0 & checkNumbersRome2) {
                     RomeNumbers firstNumber = Enum.valueOf(RomeNumbers.class, numbersArray[0]);
@@ -198,7 +207,7 @@ public class Main
                     if (result < 1) {
                         throw new IOException();
                     }
-                    System.out.println(romeNumbersMap.get(result));
+                    return (romeNumbersMap.get(result));
 
 
                 }
